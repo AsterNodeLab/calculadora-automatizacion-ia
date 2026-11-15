@@ -1299,7 +1299,10 @@
       if (el._raf) cancelAnimationFrame(el._raf);
       const desde = typeof el._v === "number" ? el._v : 0;
       el._v = a;
-      if (reduce.matches || desde === a) { el.textContent = fmt(a); return; }
+      // Escribe el valor final de inmediato: en pestañas ocultas rAF no dispara
+      // y el KPI se quedaría en "—" hasta el próximo render.
+      el.textContent = fmt(a);
+      if (reduce.matches || document.hidden || desde === a) return;
       const t0 = performance.now();
       const paso = (t) => {
         const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
