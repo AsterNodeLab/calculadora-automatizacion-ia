@@ -1,0 +1,9 @@
+{
+  "name": "calculadora-automatizacion-ia",
+  "version": "1.0.0",
+  "description": "Calculadora interactiva de automatización de procesos con IA (HTML/CSS/JS, sin build)",
+  "private": true,
+  "scripts": {
+    "start": "node serve.js"
+  }
+}
